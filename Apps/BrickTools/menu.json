@@ -1,0 +1,210 @@
+[
+  {
+    "label": "Utilities",
+    "type": "menu",
+    "description": "Some useful tools",
+    "menu": [
+      {
+        "label": "Sort favorites",
+        "description": "Sort the favorites list alphabetically",
+        "type": "cmd",
+        "execute": "./scripts/sortfavorites.sh",
+        "output": "line"
+      },
+      {
+        "label": "Reboot",
+        "description": "Reboot the system",
+        "type": "cmd",
+        "execute": "./scripts/reboot.sh",
+        "output": "line"
+      }
+    ]
+  },
+  {
+    "label": "Network",
+    "type": "menu",
+    "description": "Network related tools and settings",
+    "menu": [
+      {
+        "label": "IP Address",
+        "description": "{{ip_address}}",
+        "type": "cmd",
+        "execute": "./scripts/ip.sh",
+        "output": "line",
+        "load": "./scripts/ip.sh"
+      },
+      {
+        "label": "SFTPGo Server",
+        "description": "{{listening}}",
+        "type": "toggle",
+        "execute": "./scripts/sftpgo.sh",
+        "output": "line",
+        "load": "./scripts/sftpgo.sh check"
+      },
+      {
+        "label": "SSH Server",
+        "description": "{{listening}}",
+        "type": "toggle",
+        "execute": "./scripts/sshd.sh",
+        "output": "line",
+        "load": "./scripts/sshd.sh check"
+      },
+      {
+        "label": "Syncthing",
+        "description": "{{listening}}",
+        "type": "toggle",
+        "execute": "./scripts/syncthing.sh",
+        "output": "line",
+        "load": "./scripts/syncthing.sh check"
+      }
+    ]
+  },
+  {
+    "label": "User Interface",
+    "type": "menu",
+    "description": "User Interface related tools and settings",
+    "menu": [
+      {
+        "label": "Start Tab",
+        "description": "Set the start tab of the UI",
+        "type": "select",
+        "execute": "./scripts/tabs.sh",
+        "output": "none",
+        "load": "./scripts/tabs.sh check",
+        "items": [
+          "Favorites",
+          "Recent",
+          "Best",          
+          "Games",
+          "Apps",
+          "Netplay",
+          "Settings"
+        ]
+      },
+      {
+        "label": "Top-Left Logo",
+        "description": "Enable/Disable the top-left logo",
+        "type": "toggle",
+        "execute": "./scripts/toplogo.sh",
+        "output": "none",
+        "load": "./scripts/toplogo.sh check"
+      },      
+      {
+        "label": "Click sound",
+        "description": "Enable/Disable click sound",
+        "type": "toggle",
+        "execute": "./scripts/soundclick.sh",
+        "output": "none",
+        "load": "./scripts/soundclick.sh check"
+      },
+      {
+        "label": "Background music",
+        "description": "Enable/Disable background music",
+        "type": "toggle",
+        "execute": "./scripts/soundmusic.sh",
+        "output": "none",
+        "load": "./scripts/soundmusic.sh check"
+      }
+    ]
+  },
+  {
+    "label": "LED Control",
+    "type": "menu",
+    "description": "Set LED control options",
+    "menu": [
+      {
+        "label": "LED Mode",
+        "description": "Set the LED mode",
+        "type": "select",
+        "items": [
+          "Default",
+          "Battery level",
+          "CPU speed",
+          "Temperature",
+          "Effect"
+        ],
+        "execute": "./scripts/ledmode.sh",
+        "output": "none",
+        "load": "./scripts/ledmode.sh check"
+      },
+      {
+        "label": "LED effect",
+        "description": "Set the LED effect",
+        "type": "select",
+        "items": [
+          "Disable",
+          "Linear",
+          "Breath",
+          "Sniff",
+          "Static",
+          "Blink 1",
+          "Blink 2",
+          "Blink 3"
+        ],
+        "execute": "./scripts/ledeffect.sh",
+        "output": "none",
+        "load": "./scripts/ledeffect.sh check"
+      },      
+      {
+        "label": "LED effect delay",
+        "description": "Set the LED effect delay (seconds)",
+        "type": "select",
+        "items": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "execute": "./scripts/leddelay.sh",
+        "output": "none",
+        "load": "./scripts/leddelay.sh check"
+      },     
+      {
+        "label": "LED effect color",
+        "description": "Set the LED effect color",
+        "type": "select",
+        "items": [
+          "Red",
+          "Green",
+          "Blue",
+          "Yellow",
+          "Purple",
+          "Cyan",
+          "White"
+        ],
+        "execute": "./scripts/ledcolor.sh",
+        "output": "none",
+        "load": "./scripts/ledcolor.sh check"
+      }    
+    ]
+  },  
+  {
+    "label": "System",
+    "type": "menu",
+    "description": "System related tools and settings",
+    "menu": [
+      {
+        "label": "Switch F1/F2 buttons",
+        "description": "Switch the F1/F2 buttons with Select/Start",
+        "type": "toggle",
+        "execute": "./scripts/switchf1f2.sh",
+        "output": "line",
+        "load": "./scripts/switchf1f2.sh check"
+      },
+      {
+        "label": "Max CPU Frequency",
+        "description": "Set the maximum CPU frequency permanently.",
+        "type": "toggle",
+        "execute": "./scripts/cpumax.sh",
+        "output": "none",
+        "load": "./scripts/cpumax.sh check"
+      }
+    ]
+  }
+]
