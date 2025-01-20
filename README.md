@@ -1,7 +1,7 @@
 # BrickTools
 
 BrickTools is a collection of tools and system apps for managing and configuring your Trimui Brick device.  
-It is meant to be used with Stock firmware or with StockMix/CrossMix.
+It is meant to be used with Stock firmware or with StockMix/CrossMix.  
 It integrates really well with the device theme by using the same assets and fonts.
 
 ## Menu Options
