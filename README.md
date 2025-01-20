@@ -261,7 +261,7 @@ This allows the UI to reflect the current state or value dynamically.
 Here is an example of how a script might output values to update the UI:
 
 ```sh
-#!/bin/bash
+#!/bin/sh
 
 # Example script to check the IP address
 IP=$(ip route get 1 2>/dev/null | awk '{print $NF;exit}')

@@ -1,12 +1,15 @@
-#!/bin/bash
+#!/bin/sh
 
 ACTION=$1
 
-SCRIPTDIR=$(realpath "$(dirname $0)")
-DAEMON=$SCRIPTDIR/led_daemon.sh
+SCRIPTDIR=$(pwd)/scripts
+DAEMONNAME=led_daemon.sh
+DAEMON=$SCRIPTDIR/$DAEMONNAME
 BOOTFILE=/mnt/SDCARD/System/starts/ledmode_boot.sh
 
 mkdir -p /mnt/SDCARD/System/starts
+
+echo "Deamon: $DAEMON"
 
 set_led_color() {
     echo 0 > /sys/class/led_anim/effect_enable 
@@ -42,12 +45,11 @@ fi
 
 if [ "$ACTION" == "0" ]; then
     echo "Removing boot script..."
+    killall $DAEMONNAME
     if [ -f $BOOTFILE ]; then
-        pkill -f $BOOTFILE
         rm $BOOTFILE
     fi
     echo "Stopping led daemon..."
-    pkill -f $DAEMON
     mode=$(sed -n 's/^MODE=\([0-9]*\)/\1/p' $DAEMON)
     sed -i "s/MODE=$mode/MODE=$ACTION/" $DAEMON
     chmod +x $DAEMON    
@@ -56,7 +58,7 @@ if [ "$ACTION" == "0" ]; then
     exit 0
 else
     echo "Setting led daemon..."
-    pkill -f $DAEMON
+    killall $DAEMONNAME
     mode=$(sed -n 's/^MODE=\([0-9]*\)/\1/p' $DAEMON)
     sed -i "s/MODE=$mode/MODE=$ACTION/" $DAEMON
     chmod +x $DAEMON    

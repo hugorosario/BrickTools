@@ -1,11 +1,14 @@
-#!/bin/bash
+#!/bin/sh
 
 ACTION=$1
 
-SCRIPTDIR=$(realpath "$(dirname $0)")
-DAEMON=$SCRIPTDIR/led_daemon.sh
+SCRIPTDIR=$(pwd)/scripts
+DAEMONNAME=led_daemon.sh
+DAEMON=$SCRIPTDIR/$DAEMONNAME
 
 mkdir -p /mnt/SDCARD/System/starts
+
+echo "Deamon: $DAEMON"
 
 if [ "$ACTION" == "check" ]; then
     if [ -f $DAEMON ]; then
@@ -16,12 +19,15 @@ if [ "$ACTION" == "check" ]; then
     fi
     exit 0
 else
+    echo "Killing led daemon..."
+    killall $DAEMONNAME
     echo "Setting led daemon..."
-    pkill -f $DAEMON
     mode=$(sed -n 's/^COLOR=\([0-9]*\)/\1/p' $DAEMON)
     sed -i "s/COLOR=$mode/COLOR=$ACTION/" $DAEMON
     chmod +x $DAEMON    
+    sync
     $DAEMON > /dev/null 2>&1 &
+
     exit 0
 fi
 

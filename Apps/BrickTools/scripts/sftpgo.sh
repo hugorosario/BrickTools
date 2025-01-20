@@ -1,19 +1,19 @@
-#!/bin/bash
-PATH="/mnt/SDCARD/System/bin:$PATH"
-export LD_LIBRARY_PATH="/mnt/SDCARD/System/lib:/usr/trimui/lib:$LD_LIBRARY_PATH"
+#!/bin/sh
+
+SCRIPTDIR=$(pwd)/scripts
+SBOOT=/mnt/SDCARD/System/starts
 
 ACTION=$1
 
 if [ "$ACTION" = "check" ]; then
     # if sftpgo binary does not exist, return 0
-    if [ ! -f /mnt/SDCARD/System/sftpgo/sftpgo ]; then
+    if [ ! -f $SCRIPTDIR/bin/sftpgo/sftpgo ]; then
         echo "{{listening=(not installed)}}"
         echo "{{state=0}}"
         exit 0
     fi
-    if pgrep -x "/mnt/SDCARD/System/sftpgo/sftpgo" > /dev/null; then
-        IP=$(ip route get 1 2>/dev/null | awk '{print $NF;exit}')
-        PORT=$(/mnt/SDCARD/System/bin/jq -r '.httpd.bindings[0].port' /mnt/SDCARD/System/sftpgo/sftpgo.json)
+    if pgrep -x "$SCRIPTDIR/bin/sftpgo/sftpgo" > /dev/null; then
+        PORT=$(/mnt/SDCARD/System/bin/jq -r '.httpd.bindings[0].port' $SCRIPTDIR/bin/sftpgo/sftpgo.json)
         echo "{{listening=Port: $PORT | User/Pwd: trimui/trimui}}"
         echo "{{state=1}}"
     else
@@ -24,13 +24,17 @@ if [ "$ACTION" = "check" ]; then
 fi
 
 if [ "$ACTION" = "1" ]; then
+    if [ ! -f $SCRIPTDIR/bin/sftpgo/sftpgo ]; then
+        echo "SFTPGo binary not found!"
+        exit 1
+    fi
     echo "Enabling SFTPGo..."
-    sed -i 's/export NETWORK_SFTPGO="N"/export NETWORK_SFTPGO="Y"/' /mnt/SDCARD/System/etc/ex_config
-    pkill /mnt/SDCARD/System/sftpgo/sftpgo
-    mkdir -p /opt/sftpgo
-    nice -2 /mnt/SDCARD/System/sftpgo/sftpgo serve -c /mnt/SDCARD/System/sftpgo/ >/dev/null &
+    killall sftpgo
+    cp $SCRIPTDIR/sftpgo_boot.sh $SBOOT/
+    $SBOOT/sftpgo_boot.sh &
+
     sleep 1
-    if pgrep -x "/mnt/SDCARD/System/sftpgo/sftpgo" > /dev/null; then
+    if pgrep -x "$SCRIPTDIR/bin/sftpgo/sftpgo" > /dev/null; then
         echo "SFTPGo enabled successfully!"
     else
         echo "Failed to enable SFTPGo!"
@@ -40,8 +44,8 @@ fi
 
 if [ "$ACTION" = "0" ]; then
     echo "Disabling SFTPGo..."
-    sed -i 's/export NETWORK_SFTPGO="Y"/export NETWORK_SFTPGO="N"/' /mnt/SDCARD/System/etc/ex_config
-    pkill /mnt/SDCARD/System/sftpgo/sftpgo
+    killall sftpgo
+    rm -rf $SBOOT/sftpgo_boot.sh
     echo "SFTPGo disabled successfully!"
     exit 0
 fi

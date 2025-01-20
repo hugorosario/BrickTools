@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 ################################################################################
 SYNCUSER=trimui
@@ -10,7 +10,7 @@ DEFAULTFOLDER=/mnt/SDCARD/System/syncthing/files
 export PATH="/mnt/SDCARD/System/bin:$PATH"
 export LD_LIBRARY_PATH="/mnt/SDCARD/System/lib:/usr/trimui/lib:$LD_LIBRARY_PATH"
 
-HOMEAPP=$(pwd)
+HOMEAPP=$(pwd)/scripts
 HOMEBIN=/mnt/SDCARD/System/syncthing
 SBOOT=/mnt/SDCARD/System/starts
 
@@ -38,10 +38,16 @@ if [ "$ACTION" = "1" ]; then
     kill -9 $(pidof syncthing)
     rm -rf $SBOOT/syncthing_boot.sh
 
-    echo "Installing syncthing binary..."
-    mkdir -p $HOMEBIN/data
-    mv $HOMEAPP/bin/syncthing $HOMEBIN/
-    chmod +x $HOMEBIN/syncthing
+    sync
+
+    if [ ! -f $HOMEBIN/syncthing ]; then
+        echo "Installing Syncthing..."
+        mkdir -p $HOMEBIN/data
+        cp $HOMEAPP/bin/syncthing $HOMEBIN/
+        chmod +x $HOMEBIN/syncthing
+    fi
+
+    sync
 
     if [ ! -f $HOMEBIN/config.xml ]; then
         echo "Generating Syncthing config..."
@@ -54,16 +60,20 @@ if [ "$ACTION" = "1" ]; then
         sed -i "s|\~|$DEFAULTFOLDER|" $HOMEBIN/config.xml        
     fi
 
-    echo "Setting up syncthing to run on boot..."
-    mkdir -p /mnt/SDCARD/System/starts
+    sync
+
+    echo "Setting up Syncthing to run on boot..."
+    mkdir -p $SBOOT
     cp $HOMEAPP/syncthing_boot.sh $SBOOT/
     $SBOOT/syncthing_boot.sh &
 
+    sync
+
     sleep 1
     if pgrep -x "./syncthing" > /dev/null; then
-        echo "SyncThing enabled successfully!"
+        echo "Syncthing enabled successfully!"
     else
-        echo "Failed to enable SyncThing!"
+        echo "Failed to enable Syncthing!"
     fi
     exit 0
 fi
@@ -72,7 +82,6 @@ if [ "$ACTION" = "0" ]; then
     echo "Disabling Syncthing..."
     kill -2 $(pidof syncthing)
     kill -9 $(pidof syncthing)
-    rm -rf $HOMEAPP/status.lock
     rm -rf $SBOOT/syncthing_boot.sh
     echo "Syncthing disabled successfully!"
     exit 0

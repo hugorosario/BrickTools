@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 ROMS_DIR=/mnt/SDCARD/Roms
 FAV_FILE=favourite2.json

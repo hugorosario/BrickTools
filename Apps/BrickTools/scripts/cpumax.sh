@@ -1,9 +1,10 @@
-#!/bin/bash
+#!/bin/sh
 
 ACTION=$1
 
-SCRIPTDIR=$(dirname $0)
-BOOTFILE="/mnt/SDCARD/System/starts/cpumax_boot.sh"
+SCRIPTDIR=$(pwd)/scripts
+DAEMONNAME=cpumax_boot.sh
+BOOTFILE="/mnt/SDCARD/System/starts/$DAEMONNAME"
 
 mkdir -p /mnt/SDCARD/System/starts
 
@@ -17,7 +18,7 @@ if [ "$ACTION" == "check" ]; then
 fi
 
 if [ "$ACTION" == "1" ]; then
-    pkill -f $BOOTFILE
+    killall $DAEMONNAME
     rm -f $BOOTFILE
     cp $SCRIPTDIR/cpumax_boot.sh $BOOTFILE
     chmod +x $BOOTFILE
@@ -26,7 +27,7 @@ if [ "$ACTION" == "1" ]; then
 fi
 
 if [ "$ACTION" == "0" ]; then
-    pkill -f $BOOTFILE
+    killall $DAEMONNAME
     rm -f $BOOTFILE
     exit 0
 fi

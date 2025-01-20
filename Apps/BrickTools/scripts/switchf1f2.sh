@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 ACTION=$1
 
@@ -19,7 +19,7 @@ if [ "$ACTION" = "1" ]; then
     read -r response
     if [ "$response" == "A" ]; then
         echo "Applying changes..."
-        pkill -f trimui_inputd
+        killall trimui_inputd
         mkdir -p /mnt/SDCARD/trimui/app
         cp $PATCHED $INPUTD
         chmod +x $INPUTD    
@@ -34,7 +34,7 @@ if [ "$ACTION" = "0" ]; then
     read -r response
     if [ "$response" == "A" ]; then
         echo "Applying changes..."
-        pkill -f trimui_inputd
+        killall trimui_inputd
         rm -f $INPUTD
         echo "Rebooting..."      
         reboot &

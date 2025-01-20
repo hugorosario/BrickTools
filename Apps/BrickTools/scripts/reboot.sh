@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Reboot the system
 echo "confirm:Reboot the system now?"

@@ -1,8 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 
 ACTION=$1
-
-APPDIR=$(realpath "$(dirname $0)/../")
 
 CurrentTheme=$(/mnt/SDCARD/System/bin/jq -r .theme /mnt/UDISK/system.json)
 if [ -z "$CurrentTheme" ]; then

@@ -1,18 +1,18 @@
-#!/bin/bash
-PATH="/mnt/SDCARD/System/bin:$PATH"
-export LD_LIBRARY_PATH="/mnt/SDCARD/System/lib:/usr/trimui/lib:$LD_LIBRARY_PATH"
+#!/bin/sh
+
+SCRIPTDIR=$(pwd)/scripts
+SBOOT=/mnt/SDCARD/System/starts
 
 ACTION=$1
 
 if [ "$ACTION" = "check" ]; then
     # if dropbear binary does not exist, return 0
-    if [ ! -f /mnt/SDCARD/System/bin/dropbear ]; then
+    if [ ! -f $SCRIPTDIR/bin/sshd/dropbear ]; then
         echo "{{listening=(not installed)}}"
         echo "{{state=0}}"
         exit 0
     fi
-    if pgrep -x "dropbear" > /dev/null; then
-        IP=$(ip route get 1 2>/dev/null | awk '{print $NF;exit}')
+    if pgrep -x "$SCRIPTDIR/bin/sshd/dropbear" > /dev/null; then
         echo "{{listening=User/Pwd: root/tina}}"
         echo "{{state=1}}"
     else
@@ -24,12 +24,11 @@ fi
 
 if [ "$ACTION" = "1" ]; then
     echo "Enabling SSH Server..."
-    pkill dropbear
-    sed -i 's/export NETWORK_SSH="N"/export NETWORK_SSH="Y"/' /mnt/SDCARD/System/etc/ex_config
-    mkdir -p /etc/dropbear
-    nice -2 dropbear -R
+    killall dropbear
+    cp $SCRIPTDIR/sshd_boot.sh $SBOOT/
+    $SBOOT/sshd_boot.sh &
     sleep 1
-    if pgrep -x "dropbear" > /dev/null; then
+    if pgrep -x "$SCRIPTDIR/bin/sshd/dropbear" > /dev/null; then
         echo "SSH Server enabled successfully!"
     else
         echo "Failed to enable SSH Server!"
@@ -39,8 +38,8 @@ fi
 
 if [ "$ACTION" = "0" ]; then
     echo "Disabling SSH Server..."
-    pkill dropbear
-    sed -i 's/export NETWORK_SSH="Y"/export NETWORK_SSH="N"/' /mnt/SDCARD/System/etc/ex_config
+    killall dropbear
+    rm -rf $SBOOT/sshd_boot.sh
     echo "SSH Server disabled successfully!"
     exit 0
 fi

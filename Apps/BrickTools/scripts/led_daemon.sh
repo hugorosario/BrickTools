@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 MODE=0
 EFFECT=0

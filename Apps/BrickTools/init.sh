@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 
-SCRIPTDIR=$(realpath "$(dirname $0)")
+SCRIPTDIR=$(dirname $0)/scripts
 
 # Copy jq command to the system if it doesn't exist
 if [ ! -f /mnt/SDCARD/System/bin/jq ]; then
