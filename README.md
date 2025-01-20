@@ -1,71 +1,71 @@
 # BrickTools
 
-BrickTools is a collection of tools and system apps for managing and configuring your device.
+BrickTools is a collection of tools and system apps for managing and configuring your Trimui Brick device.
 
 ## Menu Options
 
 ### Utilities
 
 - **Sort favorites**
-  - Description: Sort the favorites list alphabetically.
+  - Sort the favorites list alphabetically.
 
 - **Reboot**
-  - Description: Reboot the system.
+  - Reboot the system.
 
 ### Network
 
 - **IP Address**
-  - Description: Display the current IP address.
+  - Display the current IP address.
 
 - **SFTPGo Server**
-  - Description: Manage the SFTPGo server.
+  - Manage the SFTPGo server.
 
 - **SSH Server**
-  - Description: Manage the SSH server.
+  - Manage the SSH server.
 
 - **Syncthing**
-  - Description: Manage the Syncthing service.
+  - Manage the Syncthing service.
 
 ### User Interface
 
 - **Start Tab**
-  - Description: Set the start tab of the UI.
+  - Set the start tab of the UI.
   - Options: `Favorites`, `Recent`, `Best`, `Games`, `Apps`, `Netplay`, `Settings`
 
 - **Top-Left Logo**
-  - Description: Enable/Disable the top-left logo.
+  - Enable/Disable the top-left logo.
 
 - **Click sound**
-  - Description: Enable/Disable click sound.
+  - Enable/Disable click sound.
 
 - **Background music**
-  - Description: Enable/Disable background music.
+  - Enable/Disable background music.
 
 ### LED Control
 
 - **LED Mode**
-  - Description: Set the LED mode.
+  - Set the LED mode.
   - Options: `Default`, `Battery level`, `CPU speed`, `Temperature`, `Effect`
 
 - **LED effect**
-  - Description: Set the LED effect.
+  - Set the LED effect.
   - Options: `Disable`, `Linear`, `Breath`, `Sniff`, `Static`, `Blink 1`, `Blink 2`, `Blink 3`
 
 - **LED effect delay**
-  - Description: Set the LED effect delay (seconds).
+  - Set the LED effect delay (seconds).
   - Options: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`
 
 - **LED effect color**
-  - Description: Set the LED effect color.
+  - Set the LED effect color.
   - Options: `Red`, `Green`, `Blue`, `Yellow`, `Purple`, `Cyan`, `White`
 
 ### System
 
 - **Switch F1/F2 buttons**
-  - Description: Switch the F1/F2 buttons with Select/Start.
+  - Switch the F1/F2 buttons with Select/Start.
 
 - **Max CPU Frequency**
-  - Description: Set the maximum CPU frequency permanently.
+  - Set the maximum CPU frequency permanently.
 
 ## Customization
 
@@ -73,19 +73,21 @@ BrickTools is easy to customize by adding entries to the `menu.json` file. You c
 The following widget types are available:
 
 - **Command**
-  - Description: A simple item that triggers an action when pressed.
+  - A simple item that triggers an action when pressed.
   - Example: `"type": "cmd"`
 
 - **Toggle**
-  - Description: A switch that can be turned on or off.
+  - A switch that can be turned on or off.
+  - On script execution, the first parameter is the new state of the widget. (0 or 1 which corresponds to "Off" or "On")
   - Example: `"type": "toggle"`
 
 - **Select**
-  - Description: Select an item from a list of options
+  - Select an item from a list of options.
+  - On script execution, the first parameter is the index of the selected item (zero based, so 0 is the first item).
   - Example: `"type": "select"`
 
 - **Menu**
-  - Description: Opens a list of sub-items. It can chain multiple levels.
+  - Opens a list of sub-items. It can contain any item type and can chain multiple levels.
   - Example: `"type": "menu"`
 
 The default `menu.json` contains many examples of each type of widget.
