@@ -70,7 +70,7 @@ It integrates really well with the device theme by using the same assets and fon
 
 ## Customization
 
-BrickTools is easy to customize by adding entries to the `menu.json` file. You can define new menu options and specify their behavior. 
+BrickTools is easy to customize by adding entries to the `menu.json` file. You can define new menu options and specify their behavior.  
 The following widget types are available:
 
 - **Command**
@@ -95,11 +95,13 @@ The default `menu.json` contains many examples of each type of widget.
 
 ## Actions and Shell Commands
 
-In BrickTools, actions are triggered by interacting with the menu options defined in the `menu.json` file. Each menu option can be configured to execute specific shell commands based on the user's input. Here is how it works:
+In BrickTools, actions are triggered by interacting with the menu options defined in the `menu.json` file.  
+Each menu option can be configured to execute specific shell commands based on the user's input. Here is how it works:
 
 ### Command Execution
 
-When a menu option is selected, the corresponding shell command is executed. The type of action determines how the command is executed:
+When a menu option is selected, the corresponding shell command is executed.  
+The type of action determines how the command is executed:
 
 - **Command (`cmd`)**
   - Executes a shell script or command when the item is selected.
@@ -176,15 +178,19 @@ When a menu option is selected, the corresponding shell command is executed. The
 
 ### Shell Scripts
 
-The shell scripts executed by these actions are located in the `scripts` directory. Each script performs a specific task, such as rebooting the system, managing services, or configuring settings. The scripts can also provide feedback by outputting information or updating the state of the menu options.
+The shell scripts executed by these actions are located in the `scripts` directory.  
+Each script performs a specific task, such as rebooting the system, managing services, or configuring settings.  
+The scripts can also provide feedback by outputting information or updating the state of the menu options.
 
 ## Special Tags
 
-BrickTools uses special tags enclosed in `{{ }}` to dynamically update the UI with real-time information. These tags can be used in the `description` or `label` fields of menu options to display current states, values, or other dynamic content. Here is how they work:
+BrickTools uses special tags enclosed in `{{ }}` to dynamically update the UI with real-time information.  
+These tags can be used in the `description` or `label` fields of menu options to display current states, values, or other dynamic content.  
+Here is how they work:
 
 ### Usage
 
-Special tags are placeholders that get replaced with actual values when the menu is displayed. 
+Special tags are placeholders that get replaced with actual values when the menu is displayed.  
 They are particularly useful for showing the current state of a setting or displaying real-time information such as IP addresses or service statuses.
 
 ### Examples
@@ -233,7 +239,9 @@ They are particularly useful for showing the current state of a setting or displ
 
 ### How It Works
 
-When the `load` script is executed, it can output values in the format `{{tag=value}}`. These values are then used to replace the corresponding tags in the menu descriptions. This allows the UI to reflect the current state or value dynamically.
+When the `load` script is executed, it can output values in the format `{{tag=value}}`.  
+These values are then used to replace the corresponding tags in the menu descriptions.  
+This allows the UI to reflect the current state or value dynamically.
 
 ### Example Script Output
 
