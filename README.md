@@ -5,10 +5,10 @@ It is meant to be used with Stock firmware or with StockMix/CrossMix.
 It integrates really well with the device theme by using the same assets and fonts.
 
 ## Menu Options
-![Main menu](/Screenshots/MainScreen.png?raw=true "Main Menu")
+![Main menu](/Screenshots/MainScreen.png"Main Menu")
 
 ### Utilities
-![Utilities](/Screenshots/Utilities.png?raw=true "Utilities")
+![Utilities](/Screenshots/Utilities.png "Utilities")
 
 - **Sort favorites**
   - Sort the favorites list alphabetically.
@@ -17,7 +17,7 @@ It integrates really well with the device theme by using the same assets and fon
   - Reboot the system.
 
 ### Network
-![Network](/Screenshots/Network.png?raw=true "Network")
+![Network](/Screenshots/Network.png "Network")
 
 - **IP Address**
   - Display the current IP address.
@@ -32,7 +32,7 @@ It integrates really well with the device theme by using the same assets and fon
   - Manage the Syncthing service. (Included in the package)
 
 ### User Interface
-![User Interface](/Screenshots/UserInterface.png?raw=true "User Interface")
+![User Interface](/Screenshots/UserInterface.png "User Interface")
 
 - **Start Tab**
   - Set the start tab of the UI.
@@ -48,7 +48,7 @@ It integrates really well with the device theme by using the same assets and fon
   - Enable/Disable background music.
 
 ### LED Control
-![LED Control](/Screenshots/LedControl.png?raw=true "LED Control")
+![LED Control](/Screenshots/LedControl.png "LED Control")
 
 - **LED Mode**
   - Set the LED mode.
@@ -67,7 +67,7 @@ It integrates really well with the device theme by using the same assets and fon
   - Options: `Red`, `Green`, `Blue`, `Yellow`, `Purple`, `Cyan`, `White`
 
 ### System
-![System](/Screenshots/System.png?raw=true "System")
+![System](/Screenshots/System.png "System")
 
 - **Switch F1/F2 buttons**
   - Switch the F1/F2 buttons with Select/Start.
