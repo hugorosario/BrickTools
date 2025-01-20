@@ -19,13 +19,13 @@ It integrates really well with the device theme by using the same assets and fon
   - Display the current IP address.
 
 - **SFTPGo Server**
-  - Manage the SFTPGo server.
+  - Manage the SFTPGo server. (It needs to be previously installed)
 
 - **SSH Server**
-  - Manage the SSH server.
+  - Manage the SSH server. (It needs to be previously installed)
 
 - **Syncthing**
-  - Manage the Syncthing service.
+  - Manage the Syncthing service. (Included in the package)
 
 ### User Interface
 
