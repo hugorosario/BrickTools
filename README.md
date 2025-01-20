@@ -4,6 +4,11 @@ BrickTools is a collection of tools and system apps for managing and configuring
 It is meant to be used with Stock firmware or with StockMix/CrossMix.  
 It integrates really well with the device theme by using the same assets and fonts.
 
+## Installing
+
+Download the latest release from [here](https://github.com/hugorosario/BrickTools/releases/download/beta1/BrickTools_beta1.zip).
+Extract the zip to the root of your SDCard.
+
 ## Menu Options
 ![Main menu](/Screenshots/MainScreen.png "Main Menu")
 
