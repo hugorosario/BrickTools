@@ -70,7 +70,8 @@ It integrates really well with the device theme by using the same assets and fon
 
 ## Customization
 
-BrickTools is easy to customize by adding entries to the `menu.json` file. You can define new menu options and specify their behavior.  
+BrickTools is easy to customize by adding entries to the `menu.json` file.  
+You can define new menu options and specify their behavior.  
 The following widget types are available:
 
 - **Command**
