@@ -5,7 +5,7 @@ It is meant to be used with Stock firmware or with StockMix/CrossMix.
 It integrates really well with the device theme by using the same assets and fonts.
 
 ## Menu Options
-![Main menu](/Screenshots/MainScreen.png"Main Menu")
+![Main menu](/Screenshots/MainScreen.png "Main Menu")
 
 ### Utilities
 ![Utilities](/Screenshots/Utilities.png "Utilities")
