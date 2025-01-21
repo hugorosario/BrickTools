@@ -28,10 +28,10 @@ Extract the zip to the root of your SDCard.
   - Display the current IP address.
 
 - **SFTPGo Server**
-  - Manage the SFTPGo server. (It needs to be previously installed)
+  - Manage the SFTPGo server. (Included in the package)
 
 - **SSH Server**
-  - Manage the SSH server. (It needs to be previously installed)
+  - Manage the SSH server. (Included in the package)
 
 - **Syncthing**
   - Manage the Syncthing service. (Included in the package)
