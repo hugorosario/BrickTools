@@ -6,7 +6,7 @@ It integrates really well with the device theme by using the same assets and fon
 
 ## Installing
 
-Download the latest release from [here](https://github.com/hugorosario/BrickTools/releases/download/beta1/BrickTools_beta1.zip).  
+Download the latest release from [here](https://github.com/hugorosario/BrickTools/releases/download/beta2/BrickTools_beta2.zip).  
 Extract the zip to the root of your SDCard.
 
 ## Menu Options
