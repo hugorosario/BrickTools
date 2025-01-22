@@ -1,7 +1,7 @@
 {
-"label":"Tools",
-"icon":"icon.png",
-"iconsel":"icon.png",
-"launch":"launch.sh",
-"description":"Tools and system apps."
+    "label": "BrickTools",
+    "icon": "icon.png",
+    "iconsel": "icon.png",
+    "launch": "launch.sh",
+    "description": "Tools and system apps."
 }

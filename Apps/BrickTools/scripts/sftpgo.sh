@@ -13,8 +13,9 @@ if [ "$ACTION" = "check" ]; then
         exit 0
     fi
     if pgrep -x "$SCRIPTDIR/bin/sftpgo/sftpgo" > /dev/null; then
-        PORT=$(/mnt/SDCARD/System/bin/jq -r '.httpd.bindings[0].port' $SCRIPTDIR/bin/sftpgo/sftpgo.json)
-        echo "{{listening=Port: $PORT | User/Pwd: trimui/trimui}}"
+        HTTP=$(/mnt/SDCARD/System/bin/jq -r '.httpd.bindings[0].port' $SCRIPTDIR/bin/sftpgo/sftpgo.json)
+        SFTP=$(/mnt/SDCARD/System/bin/jq -r '.sftpd.bindings[0].port' $SCRIPTDIR/bin/sftpgo/sftpgo.json)
+        echo "{{listening=HTTP: $HTTP | SFTP: $SFTP | User/Pwd: trimui/trimui}}"
         echo "{{state=1}}"
     else
         echo "{{listening=(not running)}}"

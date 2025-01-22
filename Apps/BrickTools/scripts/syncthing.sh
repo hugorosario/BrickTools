@@ -4,14 +4,11 @@
 SYNCUSER=trimui
 SYNCPASS=trimuisync
 DEVICENAME=Trimui\ Brick
-DEFAULTFOLDER=/mnt/SDCARD/System/syncthing/files
 ################################################################################
 
-export PATH="/mnt/SDCARD/System/bin:$PATH"
-export LD_LIBRARY_PATH="/mnt/SDCARD/System/lib:/usr/trimui/lib:$LD_LIBRARY_PATH"
-
-HOMEAPP=$(pwd)/scripts
-HOMEBIN=/mnt/SDCARD/System/syncthing
+SCRIPTDIR=$(pwd)/scripts
+HOMEBIN=$SCRIPTDIR/bin/syncthing
+DEFAULTFOLDER=$HOMEBIN/files
 SBOOT=/mnt/SDCARD/System/starts
 
 ACTION=$1
@@ -21,7 +18,7 @@ if [ "$ACTION" = "check" ]; then
         IP=$(ip route get 1 2>/dev/null | awk '{print $NF;exit}')
         # get port from config.xml in node <address>0.0.0.0:8384</address>
         PORT=$(sed -n 's/.*<address>.*:\([0-9]*\)<\/address>.*/\1/p' $HOMEBIN/config.xml)
-        echo "{{listening=Port: $PORT | User/Pwd: $SYNCUSER/$SYNCPASS}}"
+        echo "{{listening=HTTP: $PORT | User/Pwd: $SYNCUSER/$SYNCPASS}}"
         echo "{{state=1}}"
     else
         echo "{{listening=(not running)}}"
@@ -34,19 +31,9 @@ if [ "$ACTION" = "1" ]; then
     echo "Enabling Syncthing..."
 
     echo "Stopping syncthing..."
-    kill -2 $(pidof syncthing)
-    kill -9 $(pidof syncthing)
+    killall syncthing
     rm -rf $SBOOT/syncthing_boot.sh
-
-    sync
-
-    if [ ! -f $HOMEBIN/syncthing ]; then
-        echo "Installing Syncthing..."
-        mkdir -p $HOMEBIN/data
-        cp $HOMEAPP/bin/syncthing $HOMEBIN/
-        chmod +x $HOMEBIN/syncthing
-    fi
-
+    chmod +x $HOMEBIN/syncthing
     sync
 
     if [ ! -f $HOMEBIN/config.xml ]; then
@@ -64,7 +51,7 @@ if [ "$ACTION" = "1" ]; then
 
     echo "Setting up Syncthing to run on boot..."
     mkdir -p $SBOOT
-    cp $HOMEAPP/syncthing_boot.sh $SBOOT/
+    cp $SCRIPTDIR/syncthing_boot.sh $SBOOT/
     $SBOOT/syncthing_boot.sh &
 
     sync
@@ -80,8 +67,7 @@ fi
 
 if [ "$ACTION" = "0" ]; then
     echo "Disabling Syncthing..."
-    kill -2 $(pidof syncthing)
-    kill -9 $(pidof syncthing)
+    killall syncthing
     rm -rf $SBOOT/syncthing_boot.sh
     echo "Syncthing disabled successfully!"
     exit 0

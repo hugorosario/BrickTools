@@ -74,7 +74,7 @@
         "items": [
           "Favorites",
           "Recent",
-          "Best",          
+          "Best",
           "Games",
           "Apps",
           "Netplay",
@@ -88,7 +88,7 @@
         "execute": "./scripts/toplogo.sh",
         "output": "none",
         "load": "./scripts/toplogo.sh check"
-      },      
+      },
       {
         "label": "Click sound",
         "description": "Enable/Disable click sound",
@@ -144,7 +144,7 @@
         "execute": "./scripts/ledeffect.sh",
         "output": "none",
         "load": "./scripts/ledeffect.sh check"
-      },      
+      },
       {
         "label": "LED effect delay",
         "description": "Set the LED effect delay (seconds)",
@@ -164,7 +164,7 @@
         "execute": "./scripts/leddelay.sh",
         "output": "none",
         "load": "./scripts/leddelay.sh check"
-      },     
+      },
       {
         "label": "LED effect color",
         "description": "Set the LED effect color",
@@ -181,14 +181,30 @@
         "execute": "./scripts/ledcolor.sh",
         "output": "none",
         "load": "./scripts/ledcolor.sh check"
-      }    
+      }
     ]
-  },  
+  },
   {
     "label": "System",
     "type": "menu",
     "description": "System related tools and settings",
     "menu": [
+      {
+        "label": "Bootlogo",
+        "description": "Set the bootlogo image",
+        "type": "select",
+        "items": [
+          "Original",
+          "Trimui Symbol",
+          "Retro 1",
+          "Retro 2",
+          "Retro 3",
+          "Retro 4"
+        ],
+        "execute": "./scripts/bootlogo.sh",
+        "output": "line",
+        "load": "./scripts/bootlogo.sh check"
+      },
       {
         "label": "Switch F1/F2 buttons",
         "description": "Switch the F1/F2 buttons with Select/Start",
