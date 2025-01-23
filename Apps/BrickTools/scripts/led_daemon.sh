@@ -5,7 +5,7 @@ EFFECT=0
 DELAY=0
 COLOR=0
 
-set_led_color() {
+disable_effects(){
     echo 0 > /sys/class/led_anim/effect_enable 
     echo 0 >  /sys/class/led_anim/effect_lr
     echo 0 >  /sys/class/led_anim/effect_m
@@ -19,6 +19,10 @@ set_led_color() {
     echo 0 > /sys/class/led_anim/effect_duration_m
     echo 0 > /sys/class/led_anim/effect_duration_f1
     echo 0 > /sys/class/led_anim/effect_duration_f2    
+}
+
+set_led_color() {
+    disable_effects
     r=$1
     g=$2
     b=$3
@@ -28,19 +32,29 @@ set_led_color() {
 }
 
 set_effect() {
+    if [ $EFFECT -eq 0 ]; then
+        # set black color = disable
+        set_led_color 0 0 0
+        return
+    fi
+    # color=0 = random from the list
+    if [ $COLOR -eq 0 ]; then
+        NEWCOLOR=$(hexdump -n 1 -e '/1 "%u"' /dev/urandom | awk '{print ($1 % 7) + 1}')
+    else    
+        NEWCOLOR=$COLOR
+    fi
     COLORHEX="000000"
-    case $COLOR in
-        0) COLORHEX="FF0000" ;; # Red
-        1) COLORHEX="00FF00" ;; # Green
-        2) COLORHEX="0000FF" ;; # Blue
-        3) COLORHEX="FFFF00" ;; # Yellow
-        4) COLORHEX="FF00FF" ;; # Purple
-        5) COLORHEX="00FFFF" ;; # Cyan
-        6) COLORHEX="FFFFFF" ;; # White
+    case $NEWCOLOR in
+        1) COLORHEX="FF0000" ;; # Red
+        2) COLORHEX="00FF00" ;; # Green
+        3) COLORHEX="0000FF" ;; # Blue
+        4) COLORHEX="FFFF00" ;; # Yellow
+        5) COLORHEX="FF00FF" ;; # Purple
+        6) COLORHEX="00FFFF" ;; # Cyan
+        7) COLORHEX="FFFFFF" ;; # White
     esac
     DELAYMS=$(((DELAY + 1) * 1000))
 
-    # only change parameters that are needed    
     echo 1 > /sys/class/led_anim/effect_enable 
     echo $COLORHEX > /sys/class/led_anim/effect_rgb_hex_lr
     echo $COLORHEX > /sys/class/led_anim/effect_rgb_hex_m
@@ -130,6 +144,7 @@ fi
 
 # effect
 if [ $MODE -eq 4 ]; then
+    disable_effects
     while true; do
         set_effect
         sleep $((DELAY + 1))

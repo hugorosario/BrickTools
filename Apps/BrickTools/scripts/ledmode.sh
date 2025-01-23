@@ -9,7 +9,7 @@ BOOTFILE=/mnt/SDCARD/System/starts/ledmode_boot.sh
 
 mkdir -p /mnt/SDCARD/System/starts
 
-echo "Deamon: $DAEMON"
+echo "Daemon: $DAEMON"
 
 set_led_color() {
     echo 0 > /sys/class/led_anim/effect_enable 
@@ -36,9 +36,25 @@ set_led_color() {
 if [ "$ACTION" == "check" ]; then
     if [ -f $DAEMON ]; then
         mode=$(sed -n 's/^MODE=\([0-9]*\)/\1/p' $DAEMON)
-        echo "{{state=$mode}}"
     else 
-        echo "{{state=0}}"
+        mode="0"
+    fi
+    echo "{{state=$mode}}"
+    if [ $mode == "4" ]; then
+        effect=$(sed -n 's/^EFFECT=\([0-9]*\)/\1/p' $DAEMON)
+        if [ $effect == "0" ]; then
+            echo "{{disable(3.1)=0}}"
+            echo "{{disable(3.2)=0}}"
+            echo "{{disable(3.3)=1}}"
+        else
+            echo "{{disable(3.1)=0}}"
+            echo "{{disable(3.2)=0}}"
+            echo "{{disable(3.3)=0}}"
+        fi    
+    else
+        echo "{{disable(3.1)=1}}"
+        echo "{{disable(3.2)=1}}"
+        echo "{{disable(3.3)=1}}"
     fi
     exit 0
 fi

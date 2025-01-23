@@ -8,7 +8,7 @@ DAEMON=$SCRIPTDIR/$DAEMONNAME
 
 mkdir -p /mnt/SDCARD/System/starts
 
-echo "Deamon: $DAEMON"
+echo "Daemon: $DAEMON"
 
 if [ "$ACTION" == "check" ]; then
     if [ -f $DAEMON ]; then

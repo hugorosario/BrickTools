@@ -121,7 +121,7 @@
           "Battery level",
           "CPU speed",
           "Temperature",
-          "Effect"
+          "Custom"
         ],
         "execute": "./scripts/ledmode.sh",
         "output": "none",
@@ -170,6 +170,7 @@
         "description": "Set the LED effect color",
         "type": "select",
         "items": [
+          "Random",
           "Red",
           "Green",
           "Blue",
