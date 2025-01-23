@@ -9,76 +9,23 @@ It integrates really well with the device theme by using the same assets and fon
 Download the latest release ZIP from [here](https://github.com/hugorosario/BrickTools/releases/latest).  
 Extract the zip to the root of your SDCard.
 
-## Menu Options
+## Screenshots
 ![Main menu](/Screenshots/MainScreen.png "Main Menu")
 
 ### Utilities
 ![Utilities](/Screenshots/Utilities.png "Utilities")
 
-- **Sort favorites**
-  - Sort the favorites list alphabetically.
-
-- **Reboot**
-  - Reboot the system.
-
 ### Network
 ![Network](/Screenshots/Network.png "Network")
-
-- **IP Address**
-  - Display the current IP address.
-
-- **SFTPGo Server**
-  - Manage the SFTPGo server. (Included in the package)
-
-- **SSH Server**
-  - Manage the SSH server. (Included in the package)
-
-- **Syncthing**
-  - Manage the Syncthing service. (Included in the package)
 
 ### User Interface
 ![User Interface](/Screenshots/UserInterface.png "User Interface")
 
-- **Start Tab**
-  - Set the start tab of the UI.
-  - Options: `Favorites`, `Recent`, `Best`, `Games`, `Apps`, `Netplay`, `Settings`
-
-- **Top-Left Logo**
-  - Enable/Disable the top-left logo.
-
-- **Click sound**
-  - Enable/Disable click sound.
-
-- **Background music**
-  - Enable/Disable background music.
-
 ### LED Control
 ![LED Control](/Screenshots/LedControl.png "LED Control")
 
-- **LED Mode**
-  - Set the LED mode.
-  - Options: `Default`, `Battery level`, `CPU speed`, `Temperature`, `Effect`
-
-- **LED effect**
-  - Set the LED effect.
-  - Options: `Disable`, `Linear`, `Breath`, `Sniff`, `Static`, `Blink 1`, `Blink 2`, `Blink 3`
-
-- **LED effect delay**
-  - Set the LED effect delay (seconds).
-  - Options: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`
-
-- **LED effect color**
-  - Set the LED effect color.
-  - Options: `Red`, `Green`, `Blue`, `Yellow`, `Purple`, `Cyan`, `White`
-
 ### System
 ![System](/Screenshots/System.png "System")
-
-- **Switch F1/F2 buttons**
-  - Switch the F1/F2 buttons with Select/Start.
-
-- **Max CPU Frequency**
-  - Set the maximum CPU frequency permanently.
 
 ## Customization
 
