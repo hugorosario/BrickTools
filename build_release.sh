@@ -1,5 +1,5 @@
 #!/bin/sh
 
-VERSION=beta4
+VERSION=beta5
 
 zip -9r ./releases/BrickTools_$VERSION.zip ./Apps
