@@ -50,7 +50,7 @@
         "load": "./scripts/sshd.sh check"
       },
       {
-        "label": "Syncthing",
+        "label": "Syncthing {{version}}",
         "description": "{{listening}}",
         "type": "toggle",
         "execute": "./scripts/syncthing.sh",
@@ -197,6 +197,7 @@
         "items": [
           "Original",
           "Trimui Symbol",
+          "RetroArch",
           "Retro 1",
           "Retro 2",
           "Retro 3",
@@ -206,6 +207,21 @@
         "output": "line",
         "load": "./scripts/bootlogo.sh check"
       },
+      {
+        "label": "Splashscreen",
+        "description": "Set the splashscreen image",
+        "type": "select",
+        "items": [
+          "Original",
+          "Trimui Symbol",
+          "RetroArch",
+          "Retro Game",
+          "Windows 95"        
+        ],
+        "execute": "./scripts/splashscreen.sh",
+        "output": "line",
+        "load": "./scripts/splashscreen.sh check"
+      },      
       {
         "label": "Switch F1/F2 buttons",
         "description": "Switch the F1/F2 buttons with Select/Start",

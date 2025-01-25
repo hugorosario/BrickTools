@@ -78,7 +78,7 @@ EOM
 echo "confirm:A reboot is required to apply the changes.\nDo you want to reboot now?"
 read -r response
 if [ "$response" == "A" ]; then
-    reboot &
+    reboot > /dev/null 2>&1 &
 fi
 
 exit 0

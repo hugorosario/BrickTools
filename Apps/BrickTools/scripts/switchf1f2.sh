@@ -24,7 +24,7 @@ if [ "$ACTION" = "1" ]; then
         cp $PATCHED $INPUTD
         chmod +x $INPUTD    
         echo "Rebooting..."      
-        reboot &
+        reboot > /dev/null 2>&1 &
     fi
     exit 0
 fi
@@ -37,7 +37,7 @@ if [ "$ACTION" = "0" ]; then
         killall trimui_inputd
         rm -f $INPUTD
         echo "Rebooting..."      
-        reboot &
+        reboot > /dev/null 2>&1 &
     fi
     exit 0
 fi

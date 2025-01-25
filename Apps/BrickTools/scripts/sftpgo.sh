@@ -32,7 +32,7 @@ if [ "$ACTION" = "1" ]; then
     echo "Enabling SFTPGo..."
     killall sftpgo
     cp $SCRIPTDIR/sftpgo_boot.sh $SBOOT/
-    $SBOOT/sftpgo_boot.sh &
+    $SBOOT/sftpgo_boot.sh > /dev/null 2>&1 &
 
     sleep 1
     if pgrep -x "$SCRIPTDIR/bin/sftpgo/sftpgo" > /dev/null; then

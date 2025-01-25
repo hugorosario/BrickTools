@@ -32,6 +32,7 @@ set_led_color() {
 }
 
 set_effect() {
+    disable_effects
     if [ $EFFECT -eq 0 ]; then
         # set black color = disable
         set_led_color 0 0 0
@@ -144,9 +145,8 @@ fi
 
 # effect
 if [ $MODE -eq 4 ]; then
-    disable_effects
     while true; do
-        set_effect
+        set_effect > /dev/null 2>&1
         sleep $((DELAY + 1))
     done
 fi

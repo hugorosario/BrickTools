@@ -41,5 +41,5 @@ echo "confirm:A reboot is required to apply the changes.\nDo you want to reboot 
 read -r response
 if [ "$response" == "A" ]; then
     echo "Rebooting..."
-    reboot &
+    reboot > /dev/null 2>&1 &
 fi

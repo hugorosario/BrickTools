@@ -5,7 +5,7 @@ echo "confirm:Reboot the system now?"
 read -r response
 if [ "$response" == "A" ]; then
     echo "Rebooting..."
-    reboot &
+    reboot > /dev/null 2>&1 &
 else
     echo "Reboot cancelled."
 fi

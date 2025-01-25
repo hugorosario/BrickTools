@@ -24,6 +24,8 @@ if [ "$ACTION" = "check" ]; then
         echo "{{listening=(not running)}}"
         echo "{{state=0}}"
     fi
+    VERSION=$($HOMEBIN/syncthing --version | sed -n 's/.*v\([0-9]*\.[0-9]*\.[0-9]*\).*/\1/p')
+    echo "{{version=$VERSION}}"
     exit 0
 fi
 
@@ -52,7 +54,7 @@ if [ "$ACTION" = "1" ]; then
     echo "Setting up Syncthing to run on boot..."
     mkdir -p $SBOOT
     cp $SCRIPTDIR/syncthing_boot.sh $SBOOT/
-    $SBOOT/syncthing_boot.sh &
+    $SBOOT/syncthing_boot.sh > /dev/null 2>&1 &
 
     sync
 
@@ -68,6 +70,8 @@ fi
 if [ "$ACTION" = "0" ]; then
     echo "Disabling Syncthing..."
     killall syncthing
+    # wait for syncthing to stop
+    sleep 1
     rm -rf $SBOOT/syncthing_boot.sh
     echo "Syncthing disabled successfully!"
     exit 0

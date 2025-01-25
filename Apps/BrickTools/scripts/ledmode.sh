@@ -85,7 +85,7 @@ cat >$BOOTFILE <<-EOM
     $DAEMON > /dev/null 2>&1 &
 EOM
     chmod +x $BOOTFILE
-    $BOOTFILE
+    $BOOTFILE > /dev/null 2>&1 &
     exit 0
 fi
 

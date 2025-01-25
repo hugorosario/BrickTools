@@ -22,7 +22,7 @@ if [ "$ACTION" == "1" ]; then
     rm -f $BOOTFILE
     cp $SCRIPTDIR/cpumax_boot.sh $BOOTFILE
     chmod +x $BOOTFILE
-    $BOOTFILE > /dev/null &
+    $BOOTFILE > /dev/null 2>&1 &
     exit 0
 fi
 
