@@ -201,7 +201,8 @@
           "Retro 1",
           "Retro 2",
           "Retro 3",
-          "Retro 4"
+          "Retro 4",
+          "Windows 95"
         ],
         "execute": "./scripts/bootlogo.sh",
         "output": "line",
