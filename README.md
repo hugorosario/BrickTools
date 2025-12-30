@@ -3,7 +3,7 @@
 BrickTools is a collection of tools and system apps to improve your Trimui Brick device.  
 It is meant to be used with Stock firmware or with StockMix/CrossMix.  
 It integrates really well with the device theme by using the same assets and fonts.
-Source-code of the binary app can be found here at https://github.com/hugorosario/Trimui-Tools
+Source-code of the binary app can be found at https://github.com/hugorosario/Trimui-Tools
 
 ## Installing
 
